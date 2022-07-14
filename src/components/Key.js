@@ -53,7 +53,12 @@ const Key = ({ tone }) => {
         //} else {
         //    g.gain.exponentialRampToValueAtTime(1.00000, context.currentTime + 0.1);
         //}
+        //if (!firstNote) {
+        //    o.stop();
+        //    firstNote = false;
+        //}
         o = context.createOscillator();
+        g = context.createGain();
         o.connect(g);
         g.connect(context.destination);
         o.frequency.value = frequency;
@@ -61,8 +66,8 @@ const Key = ({ tone }) => {
     };
 
     const stopNote = () => {
-        //g.gain.exponentialRampToValueAtTime(0.000001, context.currentTime + 1.1);
-        o.stop();
+        g.gain.exponentialRampToValueAtTime(0.000001, context.currentTime + 3.1);
+        //o.stop();
     };
 
     return (
